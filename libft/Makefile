@@ -15,6 +15,8 @@ COMP = cc
 CFLAGS = -Wall -Werror -Wextra
 COUNT = 0
 TOTAL_FILES := 43
+RESET	=	$(shell echo "\033[0m")
+BCyan	=	$(shell echo "\033[1;36m")
 
 LIB = ft_strlen.c\
 	ft_atoi.c\

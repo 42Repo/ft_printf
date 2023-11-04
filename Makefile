@@ -13,23 +13,19 @@
 BGreen	=	$(shell echo "\033[1;32m")
 RESET	=	$(shell echo "\033[0m")
 BRed	=	$(shell echo "\033[1;31m")
-
-NAME = libftprintf.a
-COMP = clang
-CFLAGS = -Wall -Werror -Wextra
-
-HEAD = ft_printf.h
-
-libft = libft/
-
-SRC = ft_printf.c
+NAME 	=	libftprintf.a
+COMP 	=	clang
+CFLAGS 	=	-Wall -Werror -Wextra
+HEAD	=	ft_printf.h
+libft	=	libft/
+SRC		=	ft_printf.c
 
 OBJ = $(SRC:.c=.o)
 
 all : $(NAME)
 
 %.o : %.c
-	$(COMP) $(CFLAGS) -o $@ -c $< -I $(HEAD)
+	@$(COMP) $(CFLAGS) -o $@ -c $< -I $(HEAD)
 
 $(NAME) : $(OBJ)
 	@make --no-print-directory -C $(libft)
