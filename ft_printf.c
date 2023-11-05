@@ -5,30 +5,45 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/04 18:55:40 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/05 05:07:06 by asuc             ###   ########.fr       */
+/*   Created: 2023/11/05 17:19:23 by asuc              #+#    #+#             */
+/*   Updated: 2023/11/05 19:50:59 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdio.h>
+#include "includes/ft_printf.h"
 
-int	print_char(char c)
+int	ft_printf(const char *format, ...)
 {
-	ft_putchar_fd(c, 1);
-	return (1);
+	va_list	arg;
+	int		i;
+	int		count;
+
+	count = 0;
+	i = 0;
+	va_start(arg, format);
+	while (format[i])
+	{
+		if (format[i] == '%')
+		{
+			count += print_format(format, i + 1, arg);
+			i++;
+		}
+		else
+			count += ft_putchar_fd(format[i], 1);
+		i++;
+	}
+	va_end(arg);
+	return (count);
 }
 
-int	print_string(char *str)
+// print_hex for %x and %X and %p
+int	print_hex(long long nb)
 {
-	int	i;
+	int		i;
+	char	*str;
 
 	i = 0;
-	if (str == NULL)
-	{
-		ft_putstr_fd("(null)", 1);
-		return (6);
-	}
+	str = ft_itoa_base(nb, 16);
 	while (str[i])
 	{
 		ft_putchar_fd(str[i], 1);
@@ -37,43 +52,26 @@ int	print_string(char *str)
 	return (i);
 }
 
-// • %p The void * pointer argument has to be printed in hexadecimal format.
-int	print_pointer(void *ptr)
+int	print_format(const char *format, int index, va_list arg)
 {
-	int		i;
-	char	*str;
+	int	ret;
 
-	i = 0;
-	str = ft_itoa_base((unsigned long long)ptr, 16);
-	printf("str = %s\n", str);
-	ft_putstr_fd("0x", 1);
-	while (str[i])
-	{
-		ft_putchar_fd(str[i], 1);
-		i++;
-	}
-	return (i + 2);
-}
-
-int	ft_printf(const char *format, ...)
-{
-	va_list	arg;
-	int		i;
-	int		*tab_index;
-	int		count;
-
-	count = 0;
-	tab_index = NULL;
-	i = nbr_arg(format);
-	tab_index = index_type((char **)&(format), i);
-	va_start(arg, format);
-	to_print(format, tab_index, i, arg);
-	va_end(arg);
-	return (0);
-}
-
-int main()
-{
-	ft_printf("oasjidpisad%sd", "dasodasda", "dasdasdasd");
-	//printf("%s", (char *) 0);
+	ret = 0;
+	if (format[index] == 'c')
+		ret = ft_putchar_fd(va_arg(arg, int), 1);
+	else if (format[index] == 's')
+		ret = ft_putstr_fd(va_arg(arg, char *), 1);
+	else if (format[index] == 'p')
+		ret = print_hex(va_arg(arg, long long));
+	else if (format[index] == 'd' || format[index] == 'i')
+		ret = ft_putnbr_fd(va_arg(arg, int), 1);
+	else if (format[index] == 'u')
+		ret = ft_putnbr_fd(va_arg(arg, unsigned int), 1);
+	else if (format[index] == 'x')
+		ret = print_hex(va_arg(arg, long long));
+	else if (format[index] == 'X')
+		ret = print_hex(va_arg(arg, long long));
+	else if (format[index] == '%')
+		ret = ft_putchar_fd('%', 1);
+	return (ret);
 }

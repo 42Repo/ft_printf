@@ -71,13 +71,7 @@ OBJ = $(SRC:.c=.o)
 all : $(NAME)
 
 %.o : %.c
-	@$(COMP) $(CFLAGS) -o $@ -c $<
-	@$(eval COUNT=$(shell echo $$(($(COUNT)+1))))
-	@progress=$$(( $(COUNT) * 20 / $(TOTAL_FILES))); \
-	printf "\rProgression libft: ["; \
-	for i in $$(seq 1 $$progress); do printf "="; done; \
-	for i in $$(seq 1 $$(($$((20 - $$progress))))); do printf " "; done; \
-	printf "] %d/%d" $(COUNT) $(TOTAL_FILES)
+	@$(COMP) -fPIC $(CFLAGS) -o $@ -c $<
 
 $(NAME) : $(OBJ)
 	@echo

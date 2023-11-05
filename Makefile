@@ -14,26 +14,36 @@ BGreen	=	$(shell echo "\033[1;32m")
 RESET	=	$(shell echo "\033[0m")
 BRed	=	$(shell echo "\033[1;31m")
 NAME 	=	libftprintf.a
-COMP 	=	clang
+COMP 	=	gcc
 CFLAGS 	=	-Wall -Werror -Wextra
-HEAD	=	ft_printf.h
+HEAD	=	includes/
 libft	=	libft/
 SRC		=	ft_printf.c\
-			ft_printf2.c\
-			ft_printf3.c\
+			ft_printf1.c\
+
+
+#ft_printf2.c\
+#ft_printf3.c\
 
 OBJ = $(SRC:.c=.o)
 
 all : $(NAME)
 
 %.o : %.c
-	@$(COMP) $(CFLAGS) -o $@ -c $< -I $(HEAD)
+	@$(COMP) -fPIC $(CFLAGS) -o $@ -c $< -I $(HEAD)
+
+#$(NAME) : $(OBJ)
+#	@make --no-print-directory -C $(libft)
+#	@ar -rcs $(NAME) $(OBJ) libft/libft.a
+#	gcc -g $(CFLAGS) -o ft_printf $(OBJ) libft.a
+#	@echo "$(BGreen)Compilation OK$(RESET)"
 
 $(NAME) : $(OBJ)
 	@make --no-print-directory -C $(libft)
-	@cp libft/libft.a libft.a
-#@ar -rcs $(NAME) $(OBJ) libft.a
-	gcc -g $(CFLAGS) -o ft_printf $(OBJ) libft.a
+	@mkdir -p temp_libft_objs
+	@cd temp_libft_objs && ar -x ../libft/libft.a
+	@ar -rcs $(NAME) $(OBJ) temp_libft_objs/*.o
+	@rm -rf temp_libft_objs
 	@echo "$(BGreen)Compilation OK$(RESET)"
 
 clean :

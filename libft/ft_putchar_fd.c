@@ -6,13 +6,17 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 23:49:48 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/03 17:54:14 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/05 17:28:06 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+int	ft_putchar_fd(char c, int fd)
 {
-	write(fd, &c, 1);
+	int	ret;
+
+	ret = 0;
+	ret = write(fd, &c, 1);
+	return (ret);
 }
