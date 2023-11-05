@@ -74,7 +74,6 @@ all : $(NAME)
 	@$(COMP) -fPIC $(CFLAGS) -o $@ -c $<
 
 $(NAME) : $(OBJ)
-	@echo
 	@ar -rcs $(NAME) $(OBJ)
 
 clean :
