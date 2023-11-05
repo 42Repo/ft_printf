@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 23:34:53 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/05 17:36:44 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/05 20:39:14 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ int	ft_putstr_fd(char *str, int fd)
 		ret += ft_putchar_fd(str[i], fd);
 		i++;
 	}
-	return	(ret);
+	return (ret);
 }
