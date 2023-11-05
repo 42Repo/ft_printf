@@ -18,7 +18,9 @@ COMP 	=	clang
 CFLAGS 	=	-Wall -Werror -Wextra
 HEAD	=	ft_printf.h
 libft	=	libft/
-SRC		=	ft_printf.c
+SRC		=	ft_printf.c\
+			ft_printf2.c\
+			ft_printf3.c\
 
 OBJ = $(SRC:.c=.o)
 
@@ -30,7 +32,8 @@ all : $(NAME)
 $(NAME) : $(OBJ)
 	@make --no-print-directory -C $(libft)
 	@cp libft/libft.a libft.a
-	@ar -rcs $(NAME) $(OBJ) libft.a
+#@ar -rcs $(NAME) $(OBJ) libft.a
+	gcc -g $(CFLAGS) -o ft_printf $(OBJ) libft.a
 	@echo "$(BGreen)Compilation OK$(RESET)"
 
 clean :
