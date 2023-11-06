@@ -6,11 +6,12 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 17:19:23 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/05 19:50:59 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/06 03:23:57 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
+#include <stdio.h>
 
 int	ft_printf(const char *format, ...)
 {
@@ -23,7 +24,7 @@ int	ft_printf(const char *format, ...)
 	va_start(arg, format);
 	while (format[i])
 	{
-		if (format[i] == '%')
+		if (format[i] == '%' && format[i + 1] != '\0')
 		{
 			count += print_format(format, i + 1, arg);
 			i++;
@@ -37,19 +38,34 @@ int	ft_printf(const char *format, ...)
 }
 
 // print_hex for %x and %X and %p
-int	print_hex(long long nb)
+int	print_hex(unsigned long long nb, int mode)
 {
-	int		i;
 	char	*str;
+	int		ret;
 
-	i = 0;
-	str = ft_itoa_base(nb, 16);
-	while (str[i])
-	{
-		ft_putchar_fd(str[i], 1);
-		i++;
-	}
-	return (i);
+	ret = 0;
+	if (nb == 0)
+		return (ft_putstr_fd("(nil)", 1));
+	ret += ft_putstr_fd("0x", 1);
+	str = ft_itoa_base(nb, 16, mode);
+	ret += ft_putstr_fd(str, 1);
+	free(str);
+	return (ret);
+}
+
+// print_hex_other for %x and %X and %p
+int	print_hex_other(unsigned int nb, int mode)
+{
+	char	*str;
+	int		ret;
+
+	ret = 0;
+	if (nb == 0)
+		return (ft_putstr_fd("0", 1));
+	str = ft_itoa_base_hex(nb, 16, mode);
+	ret += ft_putstr_fd(str, 1);
+	free(str);
+	return (ret);
 }
 
 int	print_format(const char *format, int index, va_list arg)
@@ -62,15 +78,15 @@ int	print_format(const char *format, int index, va_list arg)
 	else if (format[index] == 's')
 		ret = ft_putstr_fd(va_arg(arg, char *), 1);
 	else if (format[index] == 'p')
-		ret = print_hex(va_arg(arg, long long));
+		ret = print_hex(va_arg(arg, unsigned long long), 1);
 	else if (format[index] == 'd' || format[index] == 'i')
 		ret = ft_putnbr_fd(va_arg(arg, int), 1);
 	else if (format[index] == 'u')
 		ret = ft_putnbr_fd(va_arg(arg, unsigned int), 1);
 	else if (format[index] == 'x')
-		ret = print_hex(va_arg(arg, long long));
+		ret = print_hex_other(va_arg(arg, long long), 2);
 	else if (format[index] == 'X')
-		ret = print_hex(va_arg(arg, long long));
+		ret = print_hex_other(va_arg(arg, long long), 3);
 	else if (format[index] == '%')
 		ret = ft_putchar_fd('%', 1);
 	return (ret);

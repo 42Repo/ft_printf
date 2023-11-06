@@ -37,7 +37,7 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
-int		ft_putnbr_fd(int n, int fd);
+int		ft_putnbr_fd(long n, int fd);
 int		ft_putchar_fd(char c, int fd);
 int		ft_putstr_fd(char *str, int fd);
 char	*ft_itoa(int n);

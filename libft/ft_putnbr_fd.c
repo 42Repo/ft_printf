@@ -6,13 +6,13 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 23:34:53 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/05 17:37:25 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/06 00:12:13 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_putnbr_fd(int n, int fd)
+int	ft_putnbr_fd(long n, int fd)
 {
 	int		to_print;
 	int		ret;
@@ -22,9 +22,9 @@ int	ft_putnbr_fd(int n, int fd)
 	ret = 0;
 	if (nb < 0)
 	{
-		write(fd, "-", 1);
+		ret += write(fd, "-", 1);
 		nb = -nb;
-		ft_putnbr_fd(nb, fd);
+		ret += ft_putnbr_fd(nb, fd);
 	}
 	else
 	{
