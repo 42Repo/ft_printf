@@ -1,0 +1,7 @@
+Test   8 (pct_5wlj) : FAILED.
+    First line of code: {return test("%-5%");}
+      expected output : "%"
+      your output     : "5%"
+      expected (nonprintable as hex) : "%"
+      actual   (nonprintable as hex) : "5%"
+
