@@ -1,31 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 18:38:59 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/06 22:22:41 by asuc             ###   ########.fr       */
+/*   Created: 2023/09/25 23:34:53 by asuc              #+#    #+#             */
+/*   Updated: 2023/11/06 00:12:13 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
-#include <stdio.h>
-#include <limits.h>
+#include "libft.h"
 
-int	main(void)
+int	ft_putnbr_fd(long n, int fd)
 {
-	int	i;
-	int *test;
-	int gay;
+	int		to_print;
+	int		ret;
+	long	nb;
 
-	test = &gay;
-	i = 0;
-	i = ft_printf("%|");
-	printf("\ni = %d\n", i);
-	i = printf("%");
-	printf("\ni = %d\n", i);
-	return (0);
-i = -1
+	nb = (long)n;
+	ret = 0;
+	if (nb < 0)
+	{
+		ret += write(fd, "-", 1);
+		nb = -nb;
+		ret += ft_putnbr_fd(nb, fd);
+	}
+	else
+	{
+		to_print = (nb % 10) + '0';
+		if (nb / 10 != 0)
+		{
+			ret += ft_putnbr_fd(nb / 10, fd);
+		}
+		ret += write(fd, &to_print, 1);
+		return (ret);
+	}
+	return (ret);
 }

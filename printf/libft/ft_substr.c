@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 18:38:59 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/06 22:22:41 by asuc             ###   ########.fr       */
+/*   Created: 2023/09/26 00:25:39 by asuc              #+#    #+#             */
+/*   Updated: 2023/11/03 17:46:33 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
-#include <stdio.h>
-#include <limits.h>
+#include "libft.h"
 
-int	main(void)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int	i;
-	int *test;
-	int gay;
+	char	*tab;
+	size_t	i;
 
-	test = &gay;
 	i = 0;
-	i = ft_printf("%|");
-	printf("\ni = %d\n", i);
-	i = printf("%");
-	printf("\ni = %d\n", i);
-	return (0);
-i = -1
+	if (!s)
+		return (NULL);
+	if (ft_strlen(s) < start)
+		return (ft_strdup(""));
+	while (i < len && s[start + i])
+		i++;
+	tab = malloc((i + 1) * sizeof(char));
+	if (!tab)
+		return (NULL);
+	ft_strlcpy(tab, s + start, i + 1);
+	return (tab);
 }

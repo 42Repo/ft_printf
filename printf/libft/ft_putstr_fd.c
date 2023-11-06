@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 18:38:59 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/06 22:22:41 by asuc             ###   ########.fr       */
+/*   Created: 2023/09/25 23:34:53 by asuc              #+#    #+#             */
+/*   Updated: 2023/11/05 21:53:36 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
-#include <stdio.h>
-#include <limits.h>
+#include "libft.h"
 
-int	main(void)
+int	ft_putstr_fd(char *str, int fd)
 {
 	int	i;
-	int *test;
-	int gay;
+	int	ret;
 
-	test = &gay;
+	ret = 0;
 	i = 0;
-	i = ft_printf("%|");
-	printf("\ni = %d\n", i);
-	i = printf("%");
-	printf("\ni = %d\n", i);
-	return (0);
-i = -1
+	if (!str || !fd)
+	{
+		while (i < 6)
+		{
+			ret += ft_putchar_fd("(null)"[i], 1);
+			i++;
+		}
+		return (ret);
+	}
+	while (str[i])
+	{
+		ret += ft_putchar_fd(str[i], fd);
+		i++;
+	}
+	return (ret);
 }

@@ -6,11 +6,11 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 17:19:23 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/06 22:19:38 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/06 22:18:47 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
+#include "../includes/ft_printf.h"
 
 int	ft_printf(const char *format, ...)
 {
@@ -23,10 +23,8 @@ int	ft_printf(const char *format, ...)
 	va_start(arg, format);
 	while (format[i])
 	{
-		if (format[i] == '%')
+		if (format[i] == '%' && format[i + 1] != '\0')
 		{
-			if (format[i + 1] == '\0')
-				return (-1);
 			count += print_format(format, i + 1, arg);
 			i++;
 		}

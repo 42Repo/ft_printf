@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 18:38:59 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/06 22:22:41 by asuc             ###   ########.fr       */
+/*   Created: 2023/09/26 00:25:03 by asuc              #+#    #+#             */
+/*   Updated: 2023/11/02 00:43:22 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
-#include <stdio.h>
-#include <limits.h>
+#include "libft.h"
 
-int	main(void)
+int	ft_memcmp(const void *p1, const void *p2, size_t size)
 {
 	int	i;
-	int *test;
-	int gay;
+	int	res;
 
-	test = &gay;
 	i = 0;
-	i = ft_printf("%|");
-	printf("\ni = %d\n", i);
-	i = printf("%");
-	printf("\ni = %d\n", i);
+	res = 0;
+	while (size)
+	{
+		if (((unsigned char *)p1)[i] != ((unsigned char *)p2)[i])
+		{
+			res = (((unsigned char *)p1)[i]) - (((unsigned char *)p2)[i]);
+			return (res);
+		}
+		i++;
+		size--;
+	}
 	return (0);
-i = -1
 }

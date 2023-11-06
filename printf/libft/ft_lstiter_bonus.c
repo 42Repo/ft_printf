@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 18:38:59 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/06 22:22:41 by asuc             ###   ########.fr       */
+/*   Created: 2023/11/02 03:55:59 by asuc              #+#    #+#             */
+/*   Updated: 2023/11/02 04:22:38 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
-#include <stdio.h>
-#include <limits.h>
+#include "libft.h"
 
-int	main(void)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	int	i;
-	int *test;
-	int gay;
-
-	test = &gay;
-	i = 0;
-	i = ft_printf("%|");
-	printf("\ni = %d\n", i);
-	i = printf("%");
-	printf("\ni = %d\n", i);
-	return (0);
-i = -1
+	if (!lst || !f)
+		return ;
+	while (lst)
+	{
+		f(lst -> content);
+		lst = lst -> next;
+	}
 }

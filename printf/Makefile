@@ -14,16 +14,12 @@ BGreen	=	$(shell echo "\033[1;32m")
 RESET	=	$(shell echo "\033[0m")
 BRed	=	$(shell echo "\033[1;31m")
 NAME 	=	libftprintf.a
-COMP 	=	cc
+COMP 	=	gcc
 CFLAGS 	=	-Wall -Werror -Wextra
 HEAD	=	includes/
 libft	=	libft/
-SRC		=	ft_printf.c\
-			ft_printf1.c\
-
-
-#ft_printf2.c\
-#ft_printf3.c\
+SRC		=	srcs/ft_printf.c\
+			srcs/ft_printf1.c\
 
 OBJ = $(SRC:.c=.o)
 
@@ -47,14 +43,6 @@ fclean : clean
 	@make fclean --no-print-directory -C $(libft)
 	@rm -f $(NAME) libft.a
 	@echo "$(BRed)Erase $(NAME) and libft.a$(RESET)"
-
-test : re
-	@gcc -g test.c ft_printf.c ft_printf1.c -L./libft -lft -o test && ./test
-
-test2 : re
-	@cd /nfs/homes/asuc/Documents/42/Students/ft_printfProject/ft_printf/tester2 && sh test m
-	@cd /nfs/homes/asuc/Documents/42/Students/ft_printfProject/ft_printf/Tester && make m
-
 
 re : fclean all
 

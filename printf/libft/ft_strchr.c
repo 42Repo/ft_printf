@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 18:38:59 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/06 22:22:41 by asuc             ###   ########.fr       */
+/*   Created: 2023/09/26 00:25:20 by asuc              #+#    #+#             */
+/*   Updated: 2023/11/03 16:17:34 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
-#include <stdio.h>
-#include <limits.h>
+#include "libft.h"
 
-int	main(void)
+char	*ft_strchr(const char *str, int c)
 {
-	int	i;
-	int *test;
-	int gay;
+	int				i;
+	unsigned char	*s;
 
-	test = &gay;
+	s = (unsigned char *)str;
 	i = 0;
-	i = ft_printf("%|");
-	printf("\ni = %d\n", i);
-	i = printf("%");
-	printf("\ni = %d\n", i);
-	return (0);
-i = -1
+	while (s[i])
+	{
+		if (s[i] == (unsigned char)c)
+			return ((char *)&(s[i]));
+		i++;
+	}
+	if (s[i] == c)
+		return ((char *)&(s[i]));
+	return (NULL);
 }
