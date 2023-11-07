@@ -49,8 +49,17 @@ test : re
 	@gcc -g test.c ft_printf.c ft_printf1.c -L./libft -lft -o test && ./test
 
 test2 : re
-	@cd /nfs/homes/asuc/Documents/42/Students/ft_printfProject/ft_printf/tester2 && sh test m
-	@cd /nfs/homes/asuc/Documents/42/Students/ft_printfProject/ft_printf/Tester && make m
+	@cp -rf ../tester2 ./tester2
+	@make -C ./tester2
+	@cd ./tester2 && ./tester m
+	@rm -rf ./tester2
+	@cp -rf ../Tester ./Tester
+	@make -C ./Tester
+	@rm -rf ./Tester
+#	@cp -rf ../pftTest ./pftTest
+#	@make -C ./pftTest
+#	@cd ./pftTest && ./test
+#	@rm -rf ./pftTest
 
 
 re : fclean all
