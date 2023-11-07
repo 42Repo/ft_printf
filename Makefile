@@ -26,7 +26,7 @@ OBJ = $(SRC:.c=.o)
 all : $(NAME)
 
 %.o : %.c
-	@$(COMP) -fPIC $(CFLAGS) -o $@ -c $< -I $(HEAD)
+	@$(COMP) -fPIE $(CFLAGS) -o $@ -c $< -I $(HEAD)
 
 $(NAME) : $(OBJ)
 	@make --no-print-directory -C $(libft)
