@@ -21,10 +21,6 @@ libft	=	libft/
 SRC		=	ft_printf.c\
 			ft_printf1.c\
 
-
-#ft_printf2.c\
-#ft_printf3.c\
-
 OBJ = $(SRC:.c=.o)
 
 all : $(NAME)
@@ -34,7 +30,8 @@ all : $(NAME)
 
 $(NAME) : $(OBJ)
 	@make --no-print-directory -C $(libft)
-	@ar -rcs $(NAME) $(OBJ) libft/libft.a
+	@cp libft/libft.a $(NAME)
+	@ar -rcs $(NAME) $(OBJ)
 	@echo "$(BGreen)Compilation OK$(RESET)"
 
 clean :
