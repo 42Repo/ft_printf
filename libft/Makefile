@@ -63,6 +63,7 @@ BONUS =	ft_lstadd_back_bonus.c\
 	ft_lstclear_bonus.c\
 	ft_lstiter_bonus.c\
 	ft_lstmap_bonus.c\
+	get_next_line.c
 
 SRC = $(LIB) $(ADDITIONAL) $(BONUS)
 

@@ -14,7 +14,7 @@ BGreen	=	$(shell echo "\033[1;32m")
 RESET	=	$(shell echo "\033[0m")
 BRed	=	$(shell echo "\033[1;31m")
 NAME 	=	libftprintf.a
-COMP 	=	cc
+COMP 	=	clang
 CFLAGS 	=	-Wall -Werror -Wextra
 HEAD	=	includes/
 libft	=	libft/
@@ -46,20 +46,21 @@ fclean : clean
 	@echo "$(BRed)Erase $(NAME) and libft.a$(RESET)"
 
 test : re
-	@gcc -g -Werror -Wextra -Wall test.c ft_printf.c ft_printf1.c -L./libft -lft -o test && ./test
+	@gcc -g test.c libftprintf.a -o test
+	@./test
 
 test2 : re
-	@cp -rf ../tester2 ./tester2
-	@make -C ./tester2
-	@cd ./tester2 && ./tester m
-	@rm -rf ./tester2
-	@cp -rf ../Tester ./Tester
-	@make -C ./Tester
-	@rm -rf ./Tester
-#	@cp -rf ../pftTest ./pftTest
-#	@make -C ./pftTest
-#	@cd ./pftTest && ./test
-#	@rm -rf ./pftTest
+#	@cp -rf ../tester2 ./tester2
+#	@make -C ./tester2
+#	@cd ./tester2 && ./tester m
+#	@rm -rf ./tester2
+#	@cp -rf ../Tester ./Tester
+#	@make -C ./Tester
+#	@rm -rf ./Tester
+	@cp -rf ../pftTest ./pftTest
+	@make -C ./pftTest
+	@cd ./pftTest && ./test
+	@rm -rf ./pftTest
 
 
 re : fclean all

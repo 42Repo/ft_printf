@@ -6,17 +6,29 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 17:19:23 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/07 23:27:19 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/09 00:53:12 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
+
+int	is_format(char c)
+{
+	int	i;
+
+	i = 0;
+	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u'
+		|| c == 'x' || c == 'X' || c == '%')
+		return (1);
+	return (0);
+}
 
 int	ft_printf(const char *format, ...)
 {
 	va_list	arg;
 	int		i;
 	int		count;
+	int		ret;
 
 	count = 0;
 	i = 0;
@@ -25,16 +37,19 @@ int	ft_printf(const char *format, ...)
 	va_start(arg, format);
 	while (format[i])
 	{
+		ret = 0;
 		if (format[i] == '%')
 		{
-			if (format[i + 1] == '\0')
-				return (-1);
-			count += print_format(format, i + 1, arg);
-			i++;
+			ret += print_format(format, i + 1, arg);
+			if (ret == 0)
+				ret += ft_putchar_fd(format[i], 1);
+			else
+				i++;
 		}
 		else
-			count += ft_putchar_fd(format[i], 1);
+			ret += ft_putchar_fd(format[i], 1);
 		i++;
+		count += ret;
 	}
 	va_end(arg);
 	return (count);
@@ -46,6 +61,8 @@ int	print_hex(unsigned long long nb)
 	int		ret;
 
 	ret = 0;
+	if (!nb)
+		return (0);
 	if (nb == 0)
 		return (ft_putstr_fd("(nil)", 1));
 	ret += ft_putstr_fd("0x", 1);
@@ -60,6 +77,8 @@ int	print_hex_other(unsigned int nb, int mode)
 	char	*str;
 	int		ret;
 
+	if (!nb)
+		return (0);
 	ret = 0;
 	if (nb == 0)
 		return (ft_putstr_fd("0", 1));
