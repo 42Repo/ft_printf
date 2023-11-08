@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 17:19:23 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/06 22:19:38 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/07 23:27:19 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	ft_printf(const char *format, ...)
 
 	count = 0;
 	i = 0;
+	if (!format)
+		return (-1);
 	va_start(arg, format);
 	while (format[i])
 	{

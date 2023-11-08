@@ -46,7 +46,7 @@ fclean : clean
 	@echo "$(BRed)Erase $(NAME) and libft.a$(RESET)"
 
 test : re
-	@gcc -g test.c ft_printf.c ft_printf1.c -L./libft -lft -o test && ./test
+	@gcc -g -Werror -Wextra -Wall test.c ft_printf.c ft_printf1.c -L./libft -lft -o test && ./test
 
 test2 : re
 	@cp -rf ../tester2 ./tester2

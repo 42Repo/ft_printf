@@ -6,13 +6,13 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 04:46:05 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/06 18:35:21 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/07 23:53:24 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
 
-int	ft_numlen_base(unsigned long int n, int base)
+int	ft_num_len_base(unsigned long int n, int base)
 {
 	int	len;
 
@@ -34,7 +34,7 @@ char	*ft_itoa_base(unsigned long int n, int base)
 
 	if (base < 2 || base > 16)
 		return (NULL);
-	len = ft_numlen_base(n, base);
+	len = ft_num_len_base(n, base);
 	str = ft_calloc(sizeof(char), (len + 1));
 	if (str == NULL)
 		return (NULL);
@@ -48,21 +48,6 @@ char	*ft_itoa_base(unsigned long int n, int base)
 	return (str);
 }
 
-int	ft_numlen_base_hex(unsigned int n, int base)
-{
-	int	len;
-
-	len = 0;
-	if (n == 0)
-		return (1);
-	while (n)
-	{
-		n /= base;
-		len++;
-	}
-	return (len);
-}
-
 char	*ft_itoa_base_hex(unsigned int n, int base, int mode)
 {
 	int		len;
@@ -70,7 +55,7 @@ char	*ft_itoa_base_hex(unsigned int n, int base, int mode)
 
 	if (base < 2 || base > 16)
 		return (NULL);
-	len = ft_numlen_base(n, base);
+	len = ft_num_len_base(n, base);
 	str = ft_calloc(sizeof(char), (len + 1));
 	if (str == NULL)
 		return (NULL);
