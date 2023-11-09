@@ -26,7 +26,7 @@ OBJ = $(SRC:.c=.o)
 all : $(NAME)
 
 %.o : %.c
-	@$(COMP) -fPIE $(CFLAGS) -o $@ -c $< -I $(HEAD)
+	@$(COMP) -g -fPIE $(CFLAGS) -o $@ -c $< -I $(HEAD)
 
 $(NAME) : $(OBJ)
 	@make --no-print-directory -C $(libft)
@@ -46,9 +46,9 @@ fclean : clean
 	@echo "$(BRed)Erase $(NAME) and libft.a$(RESET)"
 
 test : re
-	@gcc -g test.c libftprintf.a -o test
+	@clang -g test.c libftprintf.a -o test
+#	@valgrind --track-origins=yes --tool=memcheck --track-fds=yes --leak-check=full -s --show-leak-kinds=all ./test
 	@./test
-
 test2 : re
 #	@cp -rf ../tester2 ./tester2
 #	@make -C ./tester2
@@ -60,6 +60,7 @@ test2 : re
 	@cp -rf ../pftTest ./pftTest
 	@make -C ./pftTest
 	@cd ./pftTest && ./test
+	@cp ./pftTest/results.txt ./results.txt
 	@rm -rf ./pftTest
 
 
