@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 00:25:11 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/09 02:23:27 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/09 02:47:24 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	unsigned char	*from;
 	unsigned char	*to;
 
-	if (!dest && !src)
+	if (!dest || !src)
 		return (NULL);
 	from = (unsigned char *)src;
 	to = (unsigned char *)dest;

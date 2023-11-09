@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 23:34:53 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/09 02:25:48 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/09 02:42:48 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_putnbr_fd(long n, int fd)
 	int		ret;
 	long	nb;
 
-	if (!n || !fd)
+	if (fd < 0 || fd > 2)
 		return (0);
 	nb = (long)n;
 	ret = 0;

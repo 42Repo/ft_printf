@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 23:49:48 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/08 21:02:10 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/09 02:41:28 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ int	ft_putchar_fd(char c, int fd)
 {
 	int	ret;
 
-	if (!c || !fd)
-		return (0);
 	ret = 0;
 	ret = write(fd, &c, 1);
 	return (ret);

@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 00:24:57 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/09 02:24:24 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/09 02:38:10 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 {
 	int	i;
 
-	if (!s || !c)
+	if (!s)
 		return (NULL);
 	i = 0;
 	while (n)
