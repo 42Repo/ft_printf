@@ -20,6 +20,7 @@ HEAD	=	includes/
 libft	=	libft/
 SRC		=	ft_printf.c\
 			ft_printf1.c\
+			ft_printf2.c\
 
 OBJ = $(SRC:.c=.o)
 
