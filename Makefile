@@ -19,8 +19,8 @@ CFLAGS 	=	-Wall -Werror -Wextra
 HEAD	=	includes/
 libft	=	libft/
 SRC		=	ft_printf.c\
-			ft_printf1.c\
-			ft_printf2.c\
+			ft_printf_utils.c\
+			ft_printf_fomat_utils.c\
 
 OBJ = $(SRC:.c=.o)
 

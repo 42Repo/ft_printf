@@ -12,8 +12,6 @@
 
 #include "includes/ft_printf.h"
 
-
-
 int	ft_printf(const char *format, ...)
 {
 	va_list	arg;
@@ -32,7 +30,7 @@ int	process_format(const char *format, va_list arg)
 	int	i;
 	int	count;
 	int	ret;
-	int err;
+	int	err;
 
 	i = 0;
 	count = 0;
@@ -73,25 +71,5 @@ int	handle_percent(const char *format, int *index, va_list arg, int *err)
 		ret = ft_putchar_fd(format[*index], 1);
 	else
 		(*index)++;
-	return (ret);
-}
-
-int	print_hex(unsigned long long nb)
-{
-	char	*str;
-	int		ret;
-
-	ret = 0;
-	if (!nb)
-		return (0);
-	if (nb == 0)
-	{
-		ret = ft_putstr_fd("(nil)", 1);
-		return (ret);
-	}
-	ret += ft_putstr_fd("0x", 1);
-	str = ft_itoa_base(nb, 16);
-	ret += ft_putstr_fd(str, 1);
-	free(str);
 	return (ret);
 }
