@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:51:56 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/03 16:12:59 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/09 02:26:18 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ char	**ft_split(const char *str, char charset)
 	int		i;
 	int		j;
 
+	if (!str)
+		return (NULL);
 	ret = NULL;
 	j = 0;
 	i = 0;

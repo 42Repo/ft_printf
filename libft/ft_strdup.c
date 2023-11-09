@@ -30,6 +30,8 @@ char	*ft_strdup(const char *s)
 {
 	char	*tab;
 
+	if (!s)
+		return (NULL);
 	tab = malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (tab == NULL)
 		return (tab);

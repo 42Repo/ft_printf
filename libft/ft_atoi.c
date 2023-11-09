@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 03:46:50 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/03 15:30:31 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/09 02:16:37 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	ft_atoi(const char *str)
 	int	sign;
 	int	sum;
 
+	if (!str)
+		return (0);
 	i = 0;
 	sign = 1;
 	sum = 0;

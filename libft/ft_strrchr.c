@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 00:25:33 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/02 18:32:35 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/09 02:28:09 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strrchr(const char *s, int c)
 	int	i;
 	int	returned;
 
+	if (!s)
+		return (NULL);
 	returned = -1;
 	i = 0;
 	while (s[i])

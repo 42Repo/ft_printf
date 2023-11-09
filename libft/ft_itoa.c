@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 23:28:48 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/03 17:49:52 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/09 02:18:11 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ char	*ft_itoa(int n)
 	int		len;
 	char	*str;
 
+	if (!n)
+		return (ft_strdup("0"));
 	len = ft_numlen(n);
 	if (n < 0)
 	{
