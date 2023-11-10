@@ -14,7 +14,7 @@ BGreen	=	$(shell echo "\033[1;32m")
 RESET	=	$(shell echo "\033[0m")
 BRed	=	$(shell echo "\033[1;31m")
 NAME 	=	libftprintf.a
-COMP 	=	clang
+COMP 	=	gcc
 CFLAGS 	=	-Wall -Werror -Wextra
 HEAD	=	includes/
 libft	=	libft/
@@ -27,7 +27,7 @@ OBJ = $(SRC:.c=.o)
 all : $(NAME)
 
 %.o : %.c
-	@$(COMP) -g -fPIE $(CFLAGS) -o $@ -c $< -I $(HEAD)
+	@$(COMP) -gdwarf-4 -fPIE $(CFLAGS) -o $@ -c $< -I $(HEAD)
 
 $(NAME) : $(OBJ)
 	@make --no-print-directory -C $(libft)
@@ -51,18 +51,19 @@ test : re
 #	@valgrind --track-origins=yes --tool=memcheck --track-fds=yes --leak-check=full -s --show-leak-kinds=all ./test
 	@./test
 test2 : re
-#	@cp -rf ../tester2 ./tester2
-#	@make -C ./tester2
-#	@cd ./tester2 && ./tester m
-#	@rm -rf ./tester2
-#	@cp -rf ../Tester ./Tester
-#	@make -C ./Tester
-#	@rm -rf ./Tester
 	@cp -rf ../pftTest ./pftTest
 	@make -C ./pftTest
 	@cd ./pftTest && ./test
 	@cp ./pftTest/results.txt ./results.txt
 	@rm -rf ./pftTest
+	@cp -rf ../ft_printf_tester ./ft_printf_tester
+	@make -C ./ft_printf_tester
+	@cd ./ft_printf_tester && ./tester m
+	@rm -rf ./ft_printf_tester
+	@cp -rf ../Tester ./Tester
+	@make -C ./Tester
+	@rm -rf ./Tester
+
 
 
 re : fclean all

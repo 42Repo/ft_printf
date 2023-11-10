@@ -71,5 +71,7 @@ int	handle_percent(const char *format, int *index, va_list arg, int *err)
 		ret = ft_putchar_fd(format[*index], 1);
 	else
 		(*index)++;
+	if (ret == -1)
+		return (0);
 	return (ret);
 }

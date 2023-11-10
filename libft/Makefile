@@ -11,10 +11,9 @@
 # **************************************************************************** #
 
 NAME = libft.a
-COMP = cc
+COMP = clang
 CFLAGS = -Wall -Werror -Wextra
-COUNT = 0
-TOTAL_FILES := 43
+
 RESET	=	$(shell echo "\033[0m")
 BCyan	=	$(shell echo "\033[1;36m")
 
@@ -72,7 +71,7 @@ OBJ = $(SRC:.c=.o)
 all : $(NAME)
 
 %.o : %.c
-	@$(COMP) -fPIE $(CFLAGS) -o $@ -c $<
+	@$(COMP) -gdwarf-4 -fPIE $(CFLAGS) -o $@ -c $<
 
 $(NAME) : $(OBJ)
 	@ar -rcs $(NAME) $(OBJ)

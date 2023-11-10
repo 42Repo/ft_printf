@@ -6,11 +6,37 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 04:46:05 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/09 18:42:45 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/10 04:22:40 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
+
+int	ft_putstr(char *str)
+{
+	int	i;
+	int	ret;
+
+	ret = 0;
+	i = 0;
+	if (!str)
+	{
+		while (i < 6)
+		{
+			ret += ft_putchar_fd("(null)"[i], 1);
+			i++;
+		}
+		return (ret);
+	}
+	if (str[0] == '\0')
+		return (-1);
+	while (str[i])
+	{
+		ret += ft_putchar_fd(str[i], 1);
+		i++;
+	}
+	return (ret);
+}
 
 int	print_format(const char *format, int index, va_list arg)
 {
@@ -20,7 +46,7 @@ int	print_format(const char *format, int index, va_list arg)
 	if (format[index] == 'c')
 		ret = ft_putchar_fd(va_arg(arg, int), 1);
 	else if (format[index] == 's')
-		ret = ft_putstr_fd(va_arg(arg, char *), 1);
+		ret = ft_putstr(va_arg(arg, char *));
 	else if (format[index] == 'p')
 		ret = print_hex(va_arg(arg, unsigned long long));
 	else if (format[index] == 'd' || format[index] == 'i')
@@ -38,9 +64,6 @@ int	print_format(const char *format, int index, va_list arg)
 
 int	is_format(char c)
 {
-	int	i;
-
-	i = 0;
 	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u'
 		|| c == 'x' || c == 'X' || c == '%')
 		return (1);

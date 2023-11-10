@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:53:40 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/09 18:42:44 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/10 04:27:31 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ int	print_hex(unsigned long long nb)
 	int		ret;
 
 	ret = 0;
-	if (!nb)
-		return (0);
 	if (nb == 0)
 	{
 		ret = ft_putstr_fd("(nil)", 1);
@@ -97,8 +95,6 @@ int	print_hex_other(unsigned int nb, int mode)
 	char	*str;
 	int		ret;
 
-	if (!nb)
-		return (0);
 	ret = 0;
 	if (nb == 0)
 		return (ft_putstr_fd("0", 1));
