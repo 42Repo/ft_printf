@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 04:46:05 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/10 04:22:40 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/10 18:26:57 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,15 @@ int	print_format(const char *format, int index, va_list arg)
 	else if (format[index] == 's')
 		ret = ft_putstr(va_arg(arg, char *));
 	else if (format[index] == 'p')
-		ret = print_hex(va_arg(arg, unsigned long long));
+		ret = print_hex(va_arg(arg, unsigned long));
 	else if (format[index] == 'd' || format[index] == 'i')
 		ret = ft_putnbr_fd(va_arg(arg, int), 1);
 	else if (format[index] == 'u')
 		ret = ft_putnbr_fd(va_arg(arg, unsigned int), 1);
 	else if (format[index] == 'x')
-		ret = print_hex_other(va_arg(arg, long long), 2);
+		ret = print_hex_other(va_arg(arg, long), 2);
 	else if (format[index] == 'X')
-		ret = print_hex_other(va_arg(arg, long long), 3);
+		ret = print_hex_other(va_arg(arg, long), 3);
 	else if (format[index] == '%')
 		ret = ft_putchar_fd('%', 1);
 	return (ret);

@@ -6,13 +6,13 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:53:40 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/10 04:27:31 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/10 18:20:13 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
 
-int	print_hex(unsigned long long nb)
+int	print_hex(unsigned long nb)
 {
 	char	*str;
 	int		ret;
@@ -30,7 +30,7 @@ int	print_hex(unsigned long long nb)
 	return (ret);
 }
 
-int	ft_num_len_base(unsigned long int n, int base)
+int	ft_num_len_base(unsigned long n, int base)
 {
 	int	len;
 
@@ -45,7 +45,7 @@ int	ft_num_len_base(unsigned long int n, int base)
 	return (len);
 }
 
-char	*ft_itoa_base(unsigned long int n, int base)
+char	*ft_itoa_base(unsigned long n, int base)
 {
 	int		len;
 	char	*str;

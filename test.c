@@ -170,7 +170,8 @@ int main() {
 	printf("-- Test: Impression de l'adresse de la fonction main --\n");
 	original_ret = printf("%p\n", main);
 	ft_ret = ft_printf("%p\n", main);
-	printf("Original printf returned: %d | ft_printf returned: %d\n", original_ret, ft_ret);
+	printf("Original printf returned: %d | ft_printf returned: %d\n\n", original_ret, ft_ret);
+
 
 // Continuez à ajouter plus de tests en suivant les principes ci-dessus...
 

@@ -46,16 +46,7 @@ fclean : clean
 	@rm -f $(NAME) libft.a
 	@echo "$(BRed)Erase $(NAME) and libft.a$(RESET)"
 
-test : re
-	@clang -g test.c libftprintf.a -o test
-#	@valgrind --track-origins=yes --tool=memcheck --track-fds=yes --leak-check=full -s --show-leak-kinds=all ./test
-	@./test
 test2 : re
-	@cp -rf ../pftTest ./pftTest
-	@make -C ./pftTest
-	@cd ./pftTest && ./test
-	@cp ./pftTest/results.txt ./results.txt
-	@rm -rf ./pftTest
 	@cp -rf ../ft_printf_tester ./ft_printf_tester
 	@make -C ./ft_printf_tester
 	@cd ./ft_printf_tester && ./tester m
@@ -63,8 +54,11 @@ test2 : re
 	@cp -rf ../Tester ./Tester
 	@make -C ./Tester
 	@rm -rf ./Tester
-
-
+	@cp -rf ../pftTest ./pftTest
+	@make -C ./pftTest
+	@cd ./pftTest && ./test
+	@cp ./pftTest/results.txt ./results.txt
+	@rm -rf ./pftTest
 
 re : fclean all
 
